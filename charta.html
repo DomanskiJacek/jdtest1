@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chart ver a</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<p>this is chart ; version 1; 1615</p>
+<button onclick="chartonload()">manual on load</button>
+<button onclick="alert('width:' + document.getElementById('chartvera').width) ">alert width</button>
+<button onclick="canvaswh()">canvas.chart width, height</button>
+
+<div id="chart_container" style="position: relative; height: 400px; width: 400px">
+<canvas id="chartvera" onload="chartonload()" style="max-width:400px; max-height:400px"></canvas>
+</div>
+<script>
+    function canvaswh(){
+        let vara = document.getElementById('chart_container');
+        let newsize = (vara.width==1200) ? 1600 : 1200
+        str1 = 'width, height: ' + vara.width + ', ' + vara.height;
+        // alert(str1);
+
+        vara.width = newsize;
+        vara.height = newsize;
+
+        document.getElementById("chartvera").resize;
+     }
+
+    function chartonload() {
+        let ctx = document.getElementById("chartvera").getContext("2d");
+
+
+        let chart = new Chart(ctx, {
+            type: "bar",
+            width: 100,
+            data: {
+                labels: ["2020/Q1", "2020/Q2", "2020/Q3", "2020/Q4"],
+                datasets: [
+                    {
+                        label: "Gross volume ($)",
+                        backgroundColor: "#79AEC8",
+                        borderColor: "#417690",
+                        data: [269, 287, 273, 292]
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    text: "Gross Volume in 2020",
+                    display: true,
+                    width: "400"
+                }
+            }
+        });
+
+        chart.width = 400;
+        chart.height = 400;
+    }
+
+
+</script>
+</body>
+</html>
